@@ -1,0 +1,26 @@
+{
+  "name": "codeboarder/shopware6-bcc-dev",
+  "description": "Development dependencies for the CodeBoarder BCC plugin.",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.3 || ^8.4 || ^8.5",
+    "shopware/core": "^6.6"
+  },
+  "config": {
+    "platform": {
+      "php": "8.3.0"
+    },
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "CodeBoarder\\BccMail\\": "custom/plugins/CodeBoarderBcc/src/"
+    }
+  },
+  "scripts": {
+    "package": "mkdir -p dist && rm -f dist/CodeBoarderBcc-local.zip && cd custom/plugins && zip -r \"../../dist/CodeBoarderBcc-local.zip\" CodeBoarderBcc"
+  }
+}

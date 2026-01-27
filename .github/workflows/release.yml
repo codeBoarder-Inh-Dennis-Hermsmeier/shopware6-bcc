@@ -1,0 +1,47 @@
+name: Release Plugin
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+
+      - name: Lint PHP
+        run: find custom/plugins/CodeBoarderBcc/src -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Prepare artifact
+        id: package
+        run: |
+          mkdir -p dist
+          SAFE_REF_NAME="${GITHUB_REF_NAME//\//-}"
+          ARCHIVE_NAME="CodeBoarderBcc-${SAFE_REF_NAME}"
+          rm -f "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip"
+          cd custom/plugins
+          zip -r "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip" CodeBoarderBcc
+          sha256sum "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip" > "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip.sha256"
+          echo "archive_name=${ARCHIVE_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            dist/${{ steps.package.outputs.archive_name }}.zip
+            dist/${{ steps.package.outputs.archive_name }}.zip.sha256
+          generate_release_notes: true

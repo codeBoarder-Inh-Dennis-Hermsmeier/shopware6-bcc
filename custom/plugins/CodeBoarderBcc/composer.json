@@ -1,0 +1,31 @@
+{
+  "name": "codeboarder/shopware-bcc",
+  "description": "Adds global BCC recipients to all outgoing Shopware 6 emails.",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dennis Hermsmeier",
+      "homepage": "https://codeboarder.de",
+      "email": "hello@codeboarder.de",
+      "role": "Author"
+    }
+  ],
+  "homepage": "https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc",
+  "require": {
+    "php": "^8.1 || ^8.2 || ^8.3 || ^8.4 || ^8.5",
+    "shopware/core": "^6.4 || ^6.5 || ^6.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "CodeBoarder\\BccMail\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "CodeBoarder\\BccMail\\CodeBoarderBcc",
+    "label": {
+      "en-GB": "CodeBoarder BCC",
+      "de-DE": "CodeBoarder BCC"
+    }
+  }
+}
