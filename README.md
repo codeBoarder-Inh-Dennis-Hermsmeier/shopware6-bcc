@@ -33,6 +33,23 @@ bin/console plugin:refresh
 bin/console plugin:install --activate CodeBoarderBcc
 ```
 
+### Create a local ZIP (for manual upload)
+
+Run this from the repository root:
+
+```bash
+mkdir -p dist
+rm -f dist/CodeBoarderBcc-local.zip
+cd custom/plugins
+zip -r "../../dist/CodeBoarderBcc-local.zip" CodeBoarderBcc
+```
+
+Or use the Composer script:
+
+```bash
+composer package
+```
+
 ## Configure
 
 See `custom/plugins/CodeBoarderBcc/README.md` for configuration details.

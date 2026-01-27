@@ -4,6 +4,7 @@ namespace CodeBoarder\BccMail\Subscriber;
 
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mime\Email;
 
 class MailBccSubscriber implements EventSubscriberInterface
@@ -18,6 +19,7 @@ class MailBccSubscriber implements EventSubscriberInterface
     {
         return [
             'mail.before.send' => 'onMailBeforeSend',
+            MessageEvent::class => 'onSymfonyMessageEvent',
         ];
     }
 
@@ -33,26 +35,41 @@ class MailBccSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $existingBccMap = [];
-        foreach ($emailMessage->getBcc() as $address) {
-            $existingBccMap[strtolower($address->getAddress())] = true;
+        $this->addBccRecipients($emailMessage, $bccRecipients);
+    }
+
+    public function onSymfonyMessageEvent(MessageEvent $event): void
+    {
+        $message = $event->getMessage();
+        if (!$message instanceof Email) {
+            return;
         }
 
-        foreach ($bccRecipients as $email) {
-            $emailKey = strtolower($email);
-            if (isset($existingBccMap[$emailKey])) {
-                continue;
-            }
-
-            $emailMessage->addBcc($email);
-            $existingBccMap[$emailKey] = true;
+        $bccRecipients = $this->getGlobalBccRecipients();
+        if ($bccRecipients === []) {
+            return;
         }
+
+        $this->addBccRecipients($message, $bccRecipients);
     }
 
     private function getBccRecipients(object $event): array
     {
         $salesChannelId = $this->resolveSalesChannelId($event);
         $rawRecipients = $this->systemConfigService->get(self::CONFIG_KEY, $salesChannelId);
+        if (!is_string($rawRecipients) || trim($rawRecipients) === '') {
+            $rawRecipients = $this->systemConfigService->get(self::CONFIG_KEY);
+        }
+        if (!is_string($rawRecipients) || trim($rawRecipients) === '') {
+            return [];
+        }
+
+        return $this->parseRecipients($rawRecipients);
+    }
+
+    private function getGlobalBccRecipients(): array
+    {
+        $rawRecipients = $this->systemConfigService->get(self::CONFIG_KEY);
         if (!is_string($rawRecipients) || trim($rawRecipients) === '') {
             return [];
         }
@@ -96,6 +113,24 @@ class MailBccSubscriber implements EventSubscriberInterface
         }
 
         return null;
+    }
+
+    private function addBccRecipients(Email $emailMessage, array $bccRecipients): void
+    {
+        $existingBccMap = [];
+        foreach ($emailMessage->getBcc() as $address) {
+            $existingBccMap[strtolower($address->getAddress())] = true;
+        }
+
+        foreach ($bccRecipients as $email) {
+            $emailKey = strtolower($email);
+            if (isset($existingBccMap[$emailKey])) {
+                continue;
+            }
+
+            $emailMessage->addBcc($email);
+            $existingBccMap[$emailKey] = true;
+        }
     }
 
     private function parseRecipients(string $raw): array

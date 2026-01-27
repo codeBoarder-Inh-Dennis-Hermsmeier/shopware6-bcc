@@ -31,8 +31,10 @@ jobs:
           mkdir -p dist
           SAFE_REF_NAME="${GITHUB_REF_NAME//\//-}"
           ARCHIVE_NAME="CodeBoarderBcc-${SAFE_REF_NAME}"
-          zip -r "dist/${ARCHIVE_NAME}.zip" custom/plugins/CodeBoarderBcc
-          sha256sum "dist/${ARCHIVE_NAME}.zip" > "dist/${ARCHIVE_NAME}.zip.sha256"
+          rm -f "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip"
+          cd custom/plugins
+          zip -r "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip" CodeBoarderBcc
+          sha256sum "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip" > "${GITHUB_WORKSPACE}/dist/${ARCHIVE_NAME}.zip.sha256"
           echo "archive_name=${ARCHIVE_NAME}" >> "$GITHUB_OUTPUT"
 
       - name: Publish release

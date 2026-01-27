@@ -19,5 +19,8 @@
     "psr-4": {
       "CodeBoarder\\BccMail\\": "custom/plugins/CodeBoarderBcc/src/"
     }
+  },
+  "scripts": {
+    "package": "mkdir -p dist && rm -f dist/CodeBoarderBcc-local.zip && cd custom/plugins && zip -r \"../../dist/CodeBoarderBcc-local.zip\" CodeBoarderBcc"
   }
 }
