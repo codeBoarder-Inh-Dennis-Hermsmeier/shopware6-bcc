@@ -25,6 +25,23 @@ jobs:
       - name: Lint PHP
         run: find custom/plugins/CodeBoarderBcc/src -type f -name '*.php' -print0 | xargs -0 -n1 php -l
 
+      - name: Set plugin version from tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          export TAG="${GITHUB_REF_NAME#v}"
+          python - <<'PY'
+          import json
+          import os
+          path = "custom/plugins/CodeBoarderBcc/composer.json"
+          tag = os.environ["TAG"]
+          with open(path, "r", encoding="utf-8") as handle:
+              data = json.load(handle)
+          data["version"] = tag
+          with open(path, "w", encoding="utf-8") as handle:
+              json.dump(data, handle, ensure_ascii=False, indent=2)
+              handle.write("\n")
+          PY
+
       - name: Prepare artifact
         id: package
         run: |

@@ -1,8 +1,12 @@
 # CodeBoarder BCC
 
+[English](README.md) | [Deutsch](README.de.md)
+
 Adds one or more BCC recipients to every email sent by Shopware 6.
 
 Repository: https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc
+
+Feature requests are welcome via GitHub Issues or Pull Requests.
 
 ## Installation
 
@@ -16,8 +20,12 @@ Repository: https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc
 sha256sum -c CodeBoarderBcc-vX.Y.Z.zip.sha256
 ```
 
-4. Extract and upload the `CodeBoarderBcc` folder to `custom/plugins/CodeBoarderBcc`.
-5. Refresh and install the plugin:
+4. Upload and install the ZIP via Shopware Administration:
+   - Go to **Extensions > My extensions**.
+   - Click **Upload extension** and choose the downloaded ZIP.
+   - After upload, click **Install** and **Activate**.
+
+Alternatively, extract and upload the `CodeBoarderBcc` folder to `custom/plugins/CodeBoarderBcc`, then refresh and install via CLI:
 
 ```bash
 bin/console plugin:refresh
@@ -51,7 +59,3 @@ composer install
 ```
 
 This installs `shopware/core` and provides classes like `Symfony\Component\Mime\Email` for code completion.
-
-## Release
-
-Tag a version like `v1.0.0` and push it. GitHub Actions builds a ZIP and attaches it to the GitHub Release automatically.

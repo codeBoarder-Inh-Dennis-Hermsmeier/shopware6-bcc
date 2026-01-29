@@ -10,48 +10,48 @@
 [![License](https://img.shields.io/github/license/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc?style=for-the-badge)](LICENSE)
 [![Donate](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=T85UYT37P3YNJ&source=url&ssrt=1769716730298)
 
-Shopware 6 plugin that adds configurable BCC recipients to all outgoing emails.
+Shopware-6-Plugin, das konfigurierbare BCC-Empfänger zu allen ausgehenden E-Mails hinzufügt.
 
-Feature requests are welcome via GitHub Issues or Pull Requests.
+Feature-Wünsche gern als GitHub Issue oder Pull Request einreichen.
 
-## Install
+## Installation
 
-### From GitHub Releases
+### Aus GitHub Releases
 
-1. Download the latest release ZIP from GitHub Releases.
-2. Download the matching `.sha256` checksum file.
-3. Verify the checksum:
+1. Lade die aktuelle Release-ZIP aus GitHub Releases herunter.
+2. Lade die passende `.sha256`-Datei herunter.
+3. Prüfe die Prüfsumme:
 
 ```bash
 sha256sum -c CodeBoarderBcc-vX.Y.Z.zip.sha256
 ```
 
-4. Upload and install the ZIP via Shopware Administration:
-   - Go to **Extensions > My extensions**.
-   - Click **Upload extension** and choose the downloaded ZIP.
-   - After upload, click **Install** and **Activate**.
+4. ZIP im Shopware-Admin hochladen und installieren:
+   - Gehe zu **Erweiterungen > Meine Erweiterungen**.
+   - Klicke **Erweiterung hochladen** und wähle die ZIP-Datei.
+   - Nach dem Upload **Installieren** und **Aktivieren**.
 
-Alternatively, extract and upload the `CodeBoarderBcc` folder to `custom/plugins/CodeBoarderBcc` on your Shopware instance, then refresh and install via CLI:
-
-```bash
-bin/console plugin:refresh
-bin/console plugin:install --activate CodeBoarderBcc
-```
-
-### From source
-
-1. Clone this repository into your Shopware project.
-2. Ensure the plugin folder is located at `custom/plugins/CodeBoarderBcc`.
-3. Refresh and install the plugin:
+Alternativ den `CodeBoarderBcc`-Ordner nach `custom/plugins/CodeBoarderBcc` kopieren und per CLI installieren:
 
 ```bash
 bin/console plugin:refresh
 bin/console plugin:install --activate CodeBoarderBcc
 ```
 
-### Create a local ZIP (for manual upload)
+### Aus dem Quellcode
 
-Run this from the repository root:
+1. Repository in dein Shopware-Projekt klonen.
+2. Stelle sicher, dass der Plugin-Ordner unter `custom/plugins/CodeBoarderBcc` liegt.
+3. Refresh und Installation:
+
+```bash
+bin/console plugin:refresh
+bin/console plugin:install --activate CodeBoarderBcc
+```
+
+### Lokales ZIP erstellen (für manuellen Upload)
+
+Aus dem Repository-Root ausführen:
 
 ```bash
 mkdir -p dist
@@ -60,22 +60,22 @@ cd custom/plugins
 zip -r "../../dist/CodeBoarderBcc-local.zip" CodeBoarderBcc
 ```
 
-Or use the Composer script:
+Oder per Composer-Skript:
 
 ```bash
 composer package
 ```
 
-## Configure
+## Konfiguration
 
-See `custom/plugins/CodeBoarderBcc/README.md` for configuration details.
+Siehe `custom/plugins/CodeBoarderBcc/README.md` für Konfigurationsdetails.
 
-## Local development
+## Lokale Entwicklung
 
-Install dev dependencies to get full type information in your IDE:
+Installiere Dev-Dependencies für vollständige Typ-Informationen im IDE:
 
 ```bash
 composer install
 ```
 
-This installs `shopware/core` and provides classes like `Symfony\Component\Mime\Email` for code completion.
+Dies installiert `shopware/core` und stellt Klassen wie `Symfony\Component\Mime\Email` für Code-Completion bereit.
