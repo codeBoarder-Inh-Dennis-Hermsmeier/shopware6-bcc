@@ -14,6 +14,13 @@ Shopware-6-Plugin, das konfigurierbare BCC-Empfänger zu allen ausgehenden E-Mai
 
 Feature-Wünsche gern als GitHub Issue oder Pull Request einreichen.
 
+## Inhaltsverzeichnis
+
+- [Support / Spenden](#support--spenden)
+- [Installation](#installation)
+- [Konfiguration](#konfiguration)
+- [Lokale Entwicklung](#lokale-entwicklung)
+
 ## Support / Spenden
 
 Im Shopware Store gibt es viele kostenpflichtige Plugins, die genau das Gleiche tun. So eine einfache Funktion sollte kein Geld kosten, deshalb ist dieses Repository Open Source. Wenn du trotzdem unterstützen möchtest, sind PayPal-Spenden herzlich willkommen.

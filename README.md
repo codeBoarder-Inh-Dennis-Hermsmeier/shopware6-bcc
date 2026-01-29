@@ -14,6 +14,13 @@ Shopware 6 plugin that adds configurable BCC recipients to all outgoing emails.
 
 Feature requests are welcome via GitHub Issues or Pull Requests.
 
+## Table of Contents
+
+- [Support / Donate](#support--donate)
+- [Install](#install)
+- [Configure](#configure)
+- [Local development](#local-development)
+
 ## Support / Donate
 
 There are many paid plugins in the Shopware Store that do the exact same thing. This is a simple feature and shouldn't cost money, so this repository is open source. If you'd still like to support the work, PayPal donations are very welcome.
