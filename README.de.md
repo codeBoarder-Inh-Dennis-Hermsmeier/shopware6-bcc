@@ -3,7 +3,7 @@
 [English](README.md) | [Deutsch](README.de.md)
 
 [![Release](https://img.shields.io/github/v/release/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc?style=for-the-badge)](https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/releases)
-[![Downloads](https://img.shields.io/github/downloads/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/total?style=for-the-badge)](https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/releases)
+[![Downloads](https://img.shields.io/github/downloads/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/latest/total?style=for-the-badge)](https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/releases)
 [![CI](https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/actions/workflows/release.yml/badge.svg?style=for-the-badge)](https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc/actions/workflows/release.yml)
 [![Shopware](https://img.shields.io/badge/Shopware-6.x-189EFF?style=for-the-badge)](https://www.shopware.com/)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
@@ -14,13 +14,17 @@ Shopware-6-Plugin, das konfigurierbare BCC-Empfänger zu allen ausgehenden E-Mai
 
 Feature-Wünsche gern als GitHub Issue oder Pull Request einreichen.
 
+## Support / Spenden
+
+Im Shopware Store gibt es viele kostenpflichtige Plugins, die genau das Gleiche tun. So eine einfache Funktion sollte kein Geld kosten, deshalb ist dieses Repository Open Source. Wenn du trotzdem unterstützen möchtest, sind PayPal-Spenden herzlich willkommen.
+
 ## Installation
 
 ### Aus GitHub Releases
 
 1. Lade die aktuelle Release-ZIP aus GitHub Releases herunter.
-2. Lade die passende `.sha256`-Datei herunter.
-3. Prüfe die Prüfsumme:
+2. (Optional) Lade die passende `.sha256`-Datei herunter.
+3. (Optional) Prüfe die Prüfsumme:
 
 ```bash
 sha256sum -c CodeBoarderBcc-vX.Y.Z.zip.sha256
@@ -68,7 +72,7 @@ composer package
 
 ## Konfiguration
 
-Siehe `custom/plugins/CodeBoarderBcc/README.md` für Konfigurationsdetails.
+Siehe [`custom/plugins/CodeBoarderBcc/README.md`](custom/plugins/CodeBoarderBcc/README.md) für Konfigurationsdetails.
 
 ## Lokale Entwicklung
 
