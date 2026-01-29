@@ -79,7 +79,7 @@ composer package
 
 ## Configure
 
-See [`custom/plugins/CodeBoarderBcc/README.md`](custom/plugins/CodeBoarderBcc/README.md) for configuration details.
+See [`custom/plugins/CodeBoarderBcc/README.md`](custom/plugins/CodeBoarderBcc/README.md#configuration) for configuration details.
 
 ## Local development
 
