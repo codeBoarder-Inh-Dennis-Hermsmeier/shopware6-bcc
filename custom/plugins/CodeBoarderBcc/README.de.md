@@ -8,6 +8,13 @@ Repository: https://github.com/codeBoarder-Inh-Dennis-Hermsmeier/shopware6-bcc
 
 Feature-Wünsche gern als GitHub Issue oder Pull Request einreichen.
 
+## Inhaltsverzeichnis
+
+- [Installation](#installation)
+- [Konfiguration](#konfiguration)
+- [Lokale Entwicklung](#lokale-entwicklung)
+- [Release](#release)
+
 ## Installation
 
 ### Aus GitHub Releases
